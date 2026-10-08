@@ -8,13 +8,14 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-components.html("""
+html_code = """
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -36,9 +37,7 @@ body {
     padding: 20px 0;
 }
 
-/* =========================
-   PHONE BODY
-   ========================= */
+/* PHONE */
 
 .phone {
     width: min(360px, 92vw);
@@ -58,9 +57,7 @@ body {
     position: relative;
 }
 
-/* =========================
-   SCREEN
-   ========================= */
+/* SCREEN */
 
 .screen {
     width: 100%;
@@ -75,20 +72,21 @@ body {
     border: 1px solid #2c3138;
 }
 
-/* =========================
-   TOP PHONE DETAILS
-   ========================= */
+/* PHONE TOP */
 
 .speaker {
     position: absolute;
+
     top: 10px;
     left: 50%;
+
     transform: translateX(-50%);
 
     width: 58px;
     height: 5px;
 
     border-radius: 10px;
+
     background: #252a31;
 
     z-index: 20;
@@ -96,6 +94,7 @@ body {
 
 .camera {
     position: absolute;
+
     top: 8px;
     right: 82px;
 
@@ -103,6 +102,7 @@ body {
     height: 7px;
 
     border-radius: 50%;
+
     background: #080a0d;
 
     border: 1px solid #3b414a;
@@ -110,9 +110,7 @@ body {
     z-index: 20;
 }
 
-/* =========================
-   LOCK SCREEN
-   ========================= */
+/* LOCK SCREEN */
 
 .lock-screen {
     position: absolute;
@@ -135,9 +133,7 @@ body {
     pointer-events: none;
 }
 
-/* =========================
-   CLOCK
-   ========================= */
+/* CLOCK */
 
 .time {
     color: #f1f3f5;
@@ -156,9 +152,7 @@ body {
     font-size: 13px;
 }
 
-/* =========================
-   BRANDING
-   ========================= */
+/* BRAND */
 
 .brand {
     margin-top: 70px;
@@ -177,7 +171,9 @@ body {
     color: #737b86;
 
     font-size: 10px;
+
     letter-spacing: 1.8px;
+
     text-transform: uppercase;
 }
 
@@ -187,13 +183,13 @@ body {
     color: #59616d;
 
     font-size: 9px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
 }
 
-/* =========================
-   FINGERPRINT
-   ========================= */
+/* FINGERPRINT */
 
 .fingerprint-area {
     position: absolute;
@@ -236,11 +232,14 @@ body {
     transform: scale(0.96);
 }
 
+/* FINGERPRINT ICON */
+
 .fp-icon {
     width: 38px;
     height: 38px;
 
     border: 3px solid #69727e;
+
     border-bottom-color: transparent;
 
     border-radius: 50%;
@@ -260,6 +259,7 @@ body {
     top: 7px;
 
     border: 3px solid #69727e;
+
     border-bottom-color: transparent;
 
     border-radius: 50%;
@@ -277,12 +277,11 @@ body {
     top: 12px;
 
     border-left: 3px solid #69727e;
+
     border-radius: 50%;
 }
 
-/* =========================
-   SCANNING
-   ========================= */
+/* SCAN */
 
 .scan-ring {
     position: absolute;
@@ -311,6 +310,7 @@ body {
 }
 
 @keyframes scan {
+
     from {
         transform: rotate(-45deg);
     }
@@ -318,7 +318,10 @@ body {
     to {
         transform: rotate(315deg);
     }
+
 }
+
+/* TEXT */
 
 .instruction {
     margin-top: 18px;
@@ -327,6 +330,8 @@ body {
 
     font-size: 11px;
 }
+
+/* PROGRESS */
 
 .progress {
     margin-top: 9px;
@@ -345,6 +350,7 @@ body {
 
 .progress-fill {
     height: 100%;
+
     width: 0%;
 
     background: #5f8cff;
@@ -352,15 +358,15 @@ body {
     border-radius: inherit;
 }
 
-/* =========================
-   GAME HUB
-   ========================= */
+/* GAME HUB */
 
 .game-hub {
     position: absolute;
+
     inset: 0;
 
     opacity: 0;
+
     transform: scale(0.96);
 
     pointer-events: none;
@@ -374,7 +380,9 @@ body {
 
 .game-hub.open {
     opacity: 1;
+
     transform: scale(1);
+
     pointer-events: auto;
 }
 
@@ -382,4 +390,453 @@ body {
     color: #f1f3f5;
 
     font-size: 25px;
+
+    font-weight: 700;
+}
+
+.hub-subtitle {
+    margin-top: 6px;
+
+    color: #737b86;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+}
+
+.hub-creator {
+    margin-top: 5px;
+
+    color: #59616d;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+/* GAME HUB CARD */
+
+.coming-soon {
+    margin-top: 70px;
+
+    padding: 27px 20px;
+
+    border-radius: 22px;
+
+    background: #171b21;
+
+    border: 1px solid #2a3038;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.15);
+}
+
+.coming-soon-icon {
+    font-size: 34px;
+}
+
+.coming-soon-title {
+    margin-top: 14px;
+
+    color: #e9edf1;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+.coming-soon-text {
+    margin-top: 7px;
+
+    color: #727a86;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+.creator-card {
+    margin-top: 22px;
+
+    color: #555d68;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+/* HOME BAR */
+
+.home-indicator {
+    position: absolute;
+
+    bottom: 8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90px;
+
+    height: 4px;
+
+    border-radius: 10px;
+
+    background: #59616c;
+
+    z-index: 30;
+}
+
+/* MOBILE */
+
+@media (max-height: 700px) {
+
+    .phone {
+        height: 600px;
+        min-height: 600px;
+    }
+
+}
+
+@media (max-width: 380px) {
+
+    .phone {
+        width: 94vw;
+        border-radius: 38px;
+    }
+
+    .screen {
+        border-radius: 31px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <div class="screen">
+
+        <div class="speaker"></div>
+
+        <div class="camera"></div>
+
+
+        <!-- LOCK SCREEN -->
+
+        <div class="lock-screen" id="lockScreen">
+
+            <div class="time" id="time">
+                12:00
+            </div>
+
+            <div class="date" id="date">
+                Loading...
+            </div>
+
+            <div class="brand">
+                M.Puzzle
+            </div>
+
+            <div class="brand-subtitle">
+                Mini Game Hub
+            </div>
+
+            <div class="creator">
+                Made by Masfa
+            </div>
+
+
+            <div class="fingerprint-area">
+
+                <div
+                    class="fingerprint"
+                    id="fingerprint"
+                >
+
+                    <div class="fp-icon"></div>
+
+                    <div class="scan-ring"></div>
+
+                </div>
+
+                <div class="instruction">
+                    Press &amp; hold to unlock
+                </div>
+
+                <div
+                    class="progress"
+                    id="progress"
+                >
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME HUB -->
+
+        <div
+            class="game-hub"
+            id="gameHub"
+        >
+
+            <div class="hub-title">
+                M.Puzzle
+            </div>
+
+            <div class="hub-subtitle">
+                CHOOSE A GAME
+            </div>
+
+            <div class="hub-creator">
+                BY MASFA
+            </div>
+
+            <div class="coming-soon">
+
+                <div class="coming-soon-icon">
+                    🧩
+                </div>
+
+                <div class="coming-soon-title">
+                    Game Hub
+                </div>
+
+                <div class="coming-soon-text">
+                    Your mini-games will appear here.
+                </div>
+
+                <div class="creator-card">
+                    M.PUZZLE • MASFA
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="home-indicator"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* CLOCK */
+
+function updateClock() {
+
+    const now = new Date();
+
+    let hours = now.getHours();
+
+    let minutes = now.getMinutes();
+
+    minutes = String(minutes).padStart(2, "0");
+
+    let displayHours = hours % 12;
+
+    if (displayHours === 0) {
+        displayHours = 12;
+    }
+
+    document.getElementById("time").textContent =
+        displayHours + ":" + minutes;
+
+    const options = {
+        weekday: "long",
+        month: "long",
+        day: "numeric"
+    };
+
+    document.getElementById("date").textContent =
+        now.toLocaleDateString(undefined, options);
+}
+
+updateClock();
+
+setInterval(updateClock, 30000);
+
+
+/* FINGERPRINT */
+
+const fingerprint =
+    document.getElementById("fingerprint");
+
+const lockScreen =
+    document.getElementById("lockScreen");
+
+const gameHub =
+    document.getElementById("gameHub");
+
+const progress =
+    document.getElementById("progress");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+let holdTimer = null;
+
+let progressTimer = null;
+
+let progressValue = 0;
+
+const HOLD_TIME = 1100;
+
+
+/* START */
+
+function startScan(event) {
+
+    event.preventDefault();
+
+    if (holdTimer) {
+        return;
+    }
+
+    fingerprint.classList.add("scanning");
+
+    progress.style.opacity = "1";
+
+    progressValue = 0;
+
+    progressTimer = setInterval(function() {
+
+        progressValue += 100 / (HOLD_TIME / 50);
+
+        if (progressValue >= 100) {
+            progressValue = 100;
+        }
+
+        progressFill.style.width =
+            progressValue + "%";
+
+    }, 50);
+
+    holdTimer = setTimeout(function() {
+
+        unlock();
+
+    }, HOLD_TIME);
+}
+
+
+/* CANCEL */
+
+function cancelScan() {
+
+    if (!holdTimer) {
+        return;
+    }
+
+    clearTimeout(holdTimer);
+
+    clearInterval(progressTimer);
+
+    holdTimer = null;
+
+    progressTimer = null;
+
+    fingerprint.classList.remove("scanning");
+
+    progressFill.style.width = "0%";
+
+    progress.style.opacity = "0";
+}
+
+
+/* UNLOCK */
+
+function unlock() {
+
+    clearTimeout(holdTimer);
+
+    clearInterval(progressTimer);
+
+    holdTimer = null;
+
+    progressTimer = null;
+
+    progressFill.style.width = "100%";
+
+    setTimeout(function() {
+
+        lockScreen.classList.add("unlocking");
+
+        setTimeout(function() {
+
+            gameHub.classList.add("open");
+
+        }, 220);
+
+    }, 120);
+}
+
+
+/* TOUCH */
+
+fingerprint.addEventListener(
+    "touchstart",
+    startScan,
+    { passive: false }
+);
+
+fingerprint.addEventListener(
+    "touchend",
+    cancelScan
+);
+
+fingerprint.addEventListener(
+    "touchcancel",
+    cancelScan
+);
+
+
+/* MOUSE */
+
+fingerprint.addEventListener(
+    "mousedown",
+    startScan
+);
+
+fingerprint.addEventListener(
+    "mouseup",
+    cancelScan
+);
+
+fingerprint.addEventListener(
+    "mouseleave",
+    cancelScan
+);
+
+</script>
+
+</body>
+</html>
+"""
+
+components.html(
+    html_code,
+    height=760,
+    scrolling=False
+)
    
