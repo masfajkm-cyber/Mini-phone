@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="M.Puzzle",
-    page_icon="📱",
+    page_icon="🧩",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
@@ -37,7 +37,7 @@ body {
 }
 
 /* =========================
-   MINI PHONE
+   PHONE BODY
    ========================= */
 
 .phone {
@@ -58,13 +58,15 @@ body {
     position: relative;
 }
 
-/* Inner screen */
+/* =========================
+   SCREEN
+   ========================= */
 
 .screen {
     width: 100%;
     height: 100%;
 
-    background: #101318;
+    background: #0d1014;
     border-radius: 34px;
 
     position: relative;
@@ -74,7 +76,7 @@ body {
 }
 
 /* =========================
-   TOP HARDWARE
+   TOP PHONE DETAILS
    ========================= */
 
 .speaker {
@@ -89,7 +91,7 @@ body {
     border-radius: 10px;
     background: #252a31;
 
-    z-index: 10;
+    z-index: 20;
 }
 
 .camera {
@@ -105,182 +107,279 @@ body {
 
     border: 1px solid #3b414a;
 
-    z-index: 10;
+    z-index: 20;
 }
 
 /* =========================
-   SCREEN CONTENT
+   LOCK SCREEN
    ========================= */
 
-.content {
-    height: 100%;
+.lock-screen {
+    position: absolute;
+    inset: 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
-    padding: 40px 25px;
+    padding-top: 68px;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.55s ease;
 }
 
-.logo {
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #f2f4f7;
+.lock-screen.unlocking {
+    opacity: 0;
+    transform: translateY(-25px);
+    pointer-events: none;
 }
 
-.subtitle {
-    margin-top: 8px;
+/* =========================
+   CLOCK
+   ========================= */
 
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+.time {
+    color: #f1f3f5;
+
+    font-size: 54px;
+    font-weight: 300;
+
+    letter-spacing: -2px;
+}
+
+.date {
+    margin-top: 5px;
 
     color: #858c97;
+
+    font-size: 13px;
 }
 
-/* Decorative center */
+/* =========================
+   BRANDING
+   ========================= */
 
-.center-icon {
-    margin-top: 55px;
+.brand {
+    margin-top: 70px;
 
-    width: 92px;
-    height: 92px;
+    color: #f1f3f5;
 
-    border-radius: 28px;
+    font-size: 26px;
+    font-weight: 700;
+
+    letter-spacing: -0.8px;
+}
+
+.brand-subtitle {
+    margin-top: 7px;
+
+    color: #737b86;
+
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.creator {
+    margin-top: 8px;
+
+    color: #59616d;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================
+   FINGERPRINT
+   ========================= */
+
+.fingerprint-area {
+    position: absolute;
+
+    bottom: 76px;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+}
 
-    background: #1a1f26;
-    border: 1px solid #303640;
+.fingerprint {
+    width: 82px;
+    height: 82px;
+
+    border-radius: 50%;
+
+    border: 1px solid #363d47;
+
+    background: #171b21;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    cursor: pointer;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,0.25),
+        0 10px 30px rgba(0,0,0,0.3),
         inset 0 1px 1px rgba(255,255,255,0.04);
 
-    font-size: 38px;
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease;
 }
 
-.status {
-    margin-top: 25px;
+.fingerprint:active {
+    transform: scale(0.96);
+}
 
-    font-size: 12px;
-    color: #777f8b;
+.fp-icon {
+    width: 38px;
+    height: 38px;
 
-    letter-spacing: 0.5px;
+    border: 3px solid #69727e;
+    border-bottom-color: transparent;
+
+    border-radius: 50%;
+
+    position: relative;
+}
+
+.fp-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 28px;
+
+    left: 5px;
+    top: 7px;
+
+    border: 3px solid #69727e;
+    border-bottom-color: transparent;
+
+    border-radius: 50%;
+}
+
+.fp-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 18px;
+
+    left: 12px;
+    top: 12px;
+
+    border-left: 3px solid #69727e;
+    border-radius: 50%;
 }
 
 /* =========================
-   BOTTOM NAV PREVIEW
+   SCANNING
    ========================= */
 
-.bottom-bar {
+.scan-ring {
     position: absolute;
 
-    left: 25px;
-    right: 25px;
-    bottom: 20px;
+    inset: -7px;
 
-    height: 54px;
+    border-radius: 50%;
 
-    border-radius: 20px;
+    border: 3px solid transparent;
 
-    background: #181c22;
-    border: 1px solid #292f37;
+    border-top-color: #5f8cff;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transform: rotate(-45deg);
 
-    color: #656d78;
+    opacity: 0;
+}
+
+.fingerprint.scanning {
+    border-color: #5f8cff;
+}
+
+.fingerprint.scanning .scan-ring {
+    opacity: 1;
+
+    animation: scan 1.1s linear infinite;
+}
+
+@keyframes scan {
+    from {
+        transform: rotate(-45deg);
+    }
+
+    to {
+        transform: rotate(315deg);
+    }
+}
+
+.instruction {
+    margin-top: 18px;
+
+    color: #707884;
 
     font-size: 11px;
-    letter-spacing: 1px;
 }
 
-/* =========================
-   HOME INDICATOR
-   ========================= */
+.progress {
+    margin-top: 9px;
 
-.home-indicator {
-    position: absolute;
+    width: 82px;
+    height: 3px;
 
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 90px;
-    height: 4px;
+    background: #242a32;
 
     border-radius: 10px;
 
-    background: #59616c;
+    overflow: hidden;
+
+    opacity: 0;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+
+    background: #5f8cff;
+
+    border-radius: inherit;
 }
 
 /* =========================
-   RESPONSIVE
+   GAME HUB
    ========================= */
 
-@media (max-height: 700px) {
-    .phone {
-        height: 600px;
-        min-height: 600px;
-    }
+.game-hub {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    transform: scale(0.96);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+
+    padding: 65px 22px 25px;
 }
 
-@media (max-width: 380px) {
-    .phone {
-        width: 94vw;
-        border-radius: 38px;
-    }
-
-    .screen {
-        border-radius: 31px;
-    }
+.game-hub.open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
 }
-</style>
-</head>
 
-<body>
+.hub-title {
+    color: #f1f3f5;
 
-<div class="phone">
-
-    <div class="screen">
-
-        <div class="speaker"></div>
-        <div class="camera"></div>
-
-        <div class="content">
-
-            <div class="logo">M.Puzzle</div>
-
-            <div class="subtitle">
-                Mini Game Hub
-            </div>
-
-            <div class="center-icon">
-                🧩
-            </div>
-
-            <div class="status">
-                Your games. One place.
-            </div>
-
-        </div>
-
-        <div class="bottom-bar">
-            M.PUZZLE
-        </div>
-
-        <div class="home-indicator"></div>
-
-    </div>
-
-</div>
-
-</body>
-</html>
-""", height=760, scrolling=False)
+    font-size: 25px;
+   
